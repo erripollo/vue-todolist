@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue ToDoList</title>
 
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-     crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- style css -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -17,16 +21,29 @@
 <body>
     
     <div id="app">
-        <!-- add new task section -->
-        <div class="new_task">
-            <input type="text" v-model="newTask" placeholder="Add new Task">
-            <button @click="addTask">Add</button>
-        </div>
-        <!-- tasks sections -->
-        <div class="tasks">
-            <div class="task" v-for="task in tasks">{{task}}
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-times-circle"></i>
+        <div class="container">
+            <div class="logo">
+                <img width="35px" :src="logo" alt="logo">
+                <h1>To do list</h1>
+                <i class="fas fa-check-double"></i>
+            </div>
+            <!-- add new task section -->
+            <div class="new_task">
+                <input type="text" v-model="newTask" placeholder="Add new Task" @keyup.Enter="addTask">
+                <button @click="addTask">Add</button>
+            </div>
+            <!-- tasks sections -->
+            <div class="tasks" v-if="tasks.length > 0">
+                <div class="task" v-for="(task, index) in tasks">
+                    <span contenteditable="true">{{task}}</span>
+                    <div class="icons">
+                        <i class="check fas fa-check-circle" @click="completeTask(index)"></i>
+                        <i class="delete fas fa-times-circle" @click="removeTask(index)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="no_tasks" v-else>
+                <p>Niente da fare 😎</p>
             </div>
 
         </div>

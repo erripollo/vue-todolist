@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  color: #31475e;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.container {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: #31475e;
+  margin-bottom: 10px;
+}
+.logo > img {
+  margin-right: 10px;
+}
+.logo > i {
+  color: #3fb884;
+}
+
+.new_task > input {
+  width: 200px;
+  height: 30px;
+  font-size: 1rem;
+}
+.new_task > button {
+  height: 30px;
+  width: 45px;
+}
+
+.tasks {
+  width: 250px;
+  padding: 40px 0;
+}
+
+.task {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #31475e;
+  padding-bottom: 10px;
+}
+.task > span::first-letter {
+  text-transform: uppercase;
+}
+
+.check {
+  color: #3fb884;
+  margin-right: 5px;
+}
+.delete {
+  color: red;
+}
+
+.no_tasks {
+  margin-top: 20px;
+}
